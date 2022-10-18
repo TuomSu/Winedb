@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<h1>Edit wine in database</h1>
+	<div>
+		<form th:object="${wine}" th:action="@{../save}" action="#" method="post">
+		<input type="hidden" th:field="*{id}" class="form-control"/>
+		<table>
+		  	<tr> 
+		  	<td>Name<input type="text" id="winename" th:field="*{winename}"  /></td>
+		  	
+		  	</tr>
+		  	<tr>						
+		  	<td>Country
+			 <select id="countrylist" th:field="*{country}" class="form-control">
+       			<option th:each="country: ${countries}" th:value="${country.countryid}" th:text="${country.name}"></option>
+    		</select></td>
+    		</tr>
+		  	<tr> 
+			<td>Year<input type="text" id="wineyear" th:field="*{wineyear}"  /></td>
+		  	
+		  	</tr>
+		  	<tr>						
+		  	<td>Type
+			 <select id="typelist" th:field="*{type}" class="form-control">
+       			<option th:each="type: ${types}" th:value="${type.typeid}" th:text="${type.name}"></option>
+    		</select></td>
+    		</tr>
+		  	<tr> 
+			<td>Price<input type="text" id="price" th:field="*{price}"  /></td>
+		  	
+			</tr>
+			
+			
+			<div style="clear: both; display: block; height: 10px;"></div>
+			</table>
+			<input type="submit" value="Save"></input>
+		</form>
+	</div>
+</body>
+</html>

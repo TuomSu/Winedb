@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Add wine to database</h1>
+	<div>
+		<form th:object="${wine}" th:action="@{save}" action="#" method="post">
+		<table>
+		  	<tr> 
+		  	<td>Name<input type="text" id="winename" th:field="*{winename}"  /></td>
+		  	<td th:if="${#fields.hasErrors('winename')}" th:errors="*{winename}"> Error</td>
+		  	</tr>
+		  	<tr>						
+		  	<td>Country
+			 <select id="countrylist" th:field="*{country}" class="form-control">
+       			<option th:each="country: ${countries}" th:value="${country.countryid}" th:text="${country.name}"></option>
+    		</select></td>
+    		</tr>
+		  	<tr> 
+			<td>Year<input type="text" id="wineyear" th:field="*{wineyear}"  /></td>
+		  	<td th:if="${#fields.hasErrors('wineyear')}" th:errors="*{wineyear}"> Error</td>
+		  	</tr>
+		  	<tr>						
+		  	<td>Type
+			 <select id="typelist" th:field="*{type}" class="form-control">
+       			<option th:each="type: ${types}" th:value="${type.typeid}" th:text="${type.name}"></option>
+    		</select></td>
+    		</tr>
+		  	<tr> 
+			<td>Price<input type="text" id="price" th:field="*{price}"  /></td>
+		  	<td th:if="${#fields.hasErrors('price')}" th:errors="*{price}"> Error</td>
+			</tr>
+			
+			
+			<div style="clear: both; display: block; height: 10px;"></div>
+			</table>
+			<input type="submit" value="Save"></input>
+		</form>
+	</div>
+</body>
+</html>

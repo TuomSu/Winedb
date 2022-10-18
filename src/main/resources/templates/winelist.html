@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" /> 
+<title>Winelist</title>
+</head>
+<body>
+
+<h1>Wines</h1>
+<div class="col-md-4">
+		<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+	</div>
+	<div class="col-md-4" style="padding:20px 0">
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
+		</form>
+	</div>
+    <table class="table table-striped" >
+		<tr>
+		    <th>Name</th>
+		    <th>Country</th>
+		    <th>Year</th>
+		    <th>Type</th>
+		    <th>Price</th>
+		    
+		</tr>  
+    	<tr th:each = "wine : ${wines}">
+    		<td th:text="${wine.winename}"></td>
+    		<td th:text="${wine.country.name}"></td>
+    		<td th:text="${wine.wineyear}"></td>
+    		<td th:text="${wine.type.name}"></td>
+    		<td th:text="${wine.price}"></td>
+    		
+    		<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${wine.id})}" class="btn btn-danger">Delete</a></td>   
+ 			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/edit/{id}(id=${wine.id})}">Edit</a></td>
+ 				 		
+    	</tr>
+     </table>
+	 <a href="/add" class="btn btn-success">Add Book</a>  
+
+</body>
+</html>
