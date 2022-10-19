@@ -45,7 +45,7 @@ public class WineRestController {
 			return repository.save(editedWine);
 		}
 		
-		//Poistaa kirjan
+		//Poistaa viinin
 		@DeleteMapping("/wines/{id}")
 		public Iterable<Wine> deleteWine(@PathVariable Long id) {
 			repository.deleteById(id);
