@@ -3,6 +3,7 @@ package Wines.winedb.domain;
 import javax.persistence.*;
 
 @Entity
+@Table (name = "appuser")
 public class AppUser {
 	
 	@Id

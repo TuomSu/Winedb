@@ -19,6 +19,7 @@ public class Type {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Long typeid;
 	
 	private String name;
